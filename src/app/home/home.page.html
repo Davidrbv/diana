@@ -12,17 +12,14 @@
       <img src="../../assets/diana_logo.png" alt="Logo App">
     </div>
     <div>
-      <h2>{{objetivo}}</h2>
+      <h2 *ngIf="!jugando">!Pulsa Comenzar para iniciar el juego¡</h2>
+      <h2 *ngIf="jugando">{{objetivo}}</h2>
     </div>
+
 
     <div class="slider">
       <ion-item>
-        <ion-range
-          [(ngModel)]="tirada"
-          min="1" max="100"
-          pin="true"
-          value="50"
-          color="primary">
+        <ion-range [(ngModel)]="tirada" min="1" max="100" pin="true" color="primary">
           <ion-label slot="start">0</ion-label>
           <ion-label slot="end">100</ion-label>
         </ion-range>
@@ -36,16 +33,16 @@
     </div>
 
     <div class="footer">
-      <ion-button class="info" color="warning" (click)="randomNumber()" shape="round">
+      <ion-button class="info" color="warning" (click)="comenzar()" shape="round">
         Comenzar
       </ion-button>
-      <ion-chip class="info" >
-        <ion-label>{{acumulado}}</ion-label>
+      <ion-chip class="info">
+        <ion-label>Puntos: {{acumulado}}</ion-label>
       </ion-chip>
-      <ion-chip class="info" >
-        <ion-label>{{intentos}}</ion-label>
+      <ion-chip class="info">
+        <ion-label>Intentos: {{intentos}}</ion-label>
       </ion-chip>
-      <ion-button class="info" color="warning" (click)="randomNumber()" shape="round">
+      <ion-button class="info" color="warning" (click)="presentAlertConfirmInfo()" shape="round">
         Info
       </ion-button>
     </div>
